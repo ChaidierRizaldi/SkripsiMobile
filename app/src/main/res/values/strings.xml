@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android MedSch</string>
+    <string name="logoview">logoView</string>
+    <string name="imageview">imageVIew</string>
+</resources>
