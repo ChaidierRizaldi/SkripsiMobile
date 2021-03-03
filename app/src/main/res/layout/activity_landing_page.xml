@@ -7,23 +7,13 @@
     tools:context=".LandingPage"
     android:background="#EBF6FF">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="423dp"
-        android:layout_height="582dp"
-        android:layout_marginTop="216dp"
-        android:src="@drawable/landingpage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="325dp"
         android:layout_height="98dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
+        android:transitionName="textView"
         android:layout_marginEnd="17dp"
         android:text="MEDSCH merupakan sebuah aplikasi yang dibuat dengan tujuan memudahkan para mahasiswa Fakultas Kedokteran UII Dalam Memantau jadwal kuliah yang sedang berlangsung"
         android:textSize="14dp"
@@ -31,6 +21,19 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="423dp"
+        android:layout_height="582dp"
+        android:transitionName="imageView"
+        android:layout_marginTop="216dp"
+        android:src="@drawable/landingpage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:layout_width="150dp"
