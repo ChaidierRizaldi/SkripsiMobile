@@ -11,6 +11,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
         <activity android:name=".LandingPage" />
+        <activity android:name=".JadwalKuliah"
+                    android:parentActivityName=".Dashboard"/>
+        <activity android:name=".DaftarDokter"
+                    android:parentActivityName=".Dashboard" />
+        <activity android:name=".Dashboard"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

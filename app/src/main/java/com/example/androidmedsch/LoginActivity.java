@@ -17,32 +17,12 @@ public class LoginActivity extends AppCompatActivity {
     TabLayout tab_layout;
     ViewPager view_pager;
     float v=0;
-    Button buttonlogin;
-    Button buttonsignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-
-
-        buttonlogin = findViewById(R.id.buttonlogin);
-        buttonlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent buttonlogin = new Intent(LoginActivity.this, Dashboard.class);
-                startActivity(buttonlogin);
-            }});
-
-        buttonsignup = findViewById(R.id.buttonsignup);
-        buttonsignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent buttonsignup = new Intent( LoginActivity.this, Dashboard.class);
-                startActivity(buttonsignup);
-            }
-        });
 
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);

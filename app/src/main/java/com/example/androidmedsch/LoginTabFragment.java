@@ -26,26 +26,25 @@ public class LoginTabFragment extends Fragment {
     TextView forgetPass;
     Button login;
     ImageView imageView;
-    float v=0;
+    float v = 0;
 
+
+    @NonNull
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
-
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
 
         email = root.findViewById(R.id.email);
         pass = root.findViewById(R.id.pass);
         forgetPass = root.findViewById(R.id.forget_Pass);
-        login = root.findViewById(R.id.login);
+        login = root.findViewById(R.id.buttonlogin);
         imageView = root.findViewById(R.id.imageLogin);
-
 
         email.setTranslationX(800);
         pass.setTranslationX(800);
         forgetPass.setTranslationX(800);
         login.setTranslationX(800);
         imageView.setTranslationX(800);
-
 
         email.setAlpha(v);
         pass.setAlpha(v);
@@ -59,11 +58,13 @@ public class LoginTabFragment extends Fragment {
         login.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
         imageView.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(900).start();
 
-
-
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Dashboard.class);
+                startActivity(intent);
+            }
+        });
         return root;
-
-
-
     }
 }
