@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".ui.login.LoginActivity"
     android:background="#EBF6FF" >
+
 
     <ImageView
         android:layout_width="252dp"

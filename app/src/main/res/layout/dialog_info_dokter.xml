@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/dialog_box"
+    android:id="@+id/layout_dialog"
+    android:layout_margin="10dp"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/dialog_iv_pengajar"
+        android:layout_weight="0.3"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:src="@drawable/doctor1"
+        />
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_tv_nama_pengajar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="18sp"
+            android:text="Dr. Bambang"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/dialog_tv_jabatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:text="Dokter THT"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/dialog_tv_nidn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:text="1571072905980081"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/dialog_tv_no_hp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:text="08979676398"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/dialog_tv_email_pengajar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/sans"
+            android:textSize="16sp"
+            android:text="khukuh.anugrah@gmail.com"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>

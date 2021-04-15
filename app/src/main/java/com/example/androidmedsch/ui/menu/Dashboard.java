@@ -1,18 +1,27 @@
-package com.example.androidmedsch;
+package com.example.androidmedsch.ui.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidmedsch.DaftarDokter;
+import com.example.androidmedsch.JadwalKuliah;
+import com.example.androidmedsch.R;
+import com.example.androidmedsch.ui.login.LoginActivity;
+import com.example.androidmedsch.utils.SharedPreferences;
+
 public class Dashboard extends AppCompatActivity {
 
     ImageButton button_jadwal_kuliah;
     ImageButton button_daftar_dokter;
     ImageButton button_keluar;
+
+    SharedPreferences sp_helper;
 
 
     @Override
@@ -24,6 +33,7 @@ public class Dashboard extends AppCompatActivity {
         button_jadwal_kuliah =findViewById(R.id.btn_jadwal_kuliah);
         button_daftar_dokter = findViewById(R.id.btn_daftar_dokter);
         button_keluar = findViewById(R.id.btn_keluar);
+        sp_helper = new SharedPreferences(this);
 
         button_jadwal_kuliah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,10 +54,14 @@ public class Dashboard extends AppCompatActivity {
         button_keluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishAffinity();
+                sp_helper.logoutUser();
+                Log.d("Data Preference", sp_helper.getDetailUser().toString());
+
+                Intent intent = new Intent(Dashboard.this, LoginActivity.class);
+                startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
             }
         });
-
-
     }
 }

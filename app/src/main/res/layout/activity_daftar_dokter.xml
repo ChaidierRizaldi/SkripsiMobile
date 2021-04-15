@@ -5,105 +5,86 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DaftarDokter"
-    android:background="#EBF6FF">
+    android:background="@color/background">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/btn_back_daftar"
         android:layout_width="60dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_baseline_keyboard_backspace_40"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="5dp"/>
 
     <TextView
-        android:id="@+id/header1"
+        android:id="@+id/header_daftar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sans"
-        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back_daftar"
+        android:layout_marginTop="30dp"
         android:text="Daftar Dosen dan Tutor PSDP"
+        android:fontFamily="@font/sans"
+        android:textSize="16sp"
         android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        android:textStyle="bold"/>
     <TextView
-        android:id="@+id/header2"
+        android:id="@+id/header_daftar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:fontFamily="@font/sans"
-        android:text="Fakultas Kedokteran UII"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_daftar1"
+        android:text="Fakultas Kedokteran UII"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/sans"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
     <LinearLayout
-        android:id="@+id/ll_search"
-        android:layout_width="312dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="52dp"
-        android:background="@drawable/bg_field"
-        android:orientation="horizontal"
-        android:padding="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        android:id="@+id/ll_searchView_dokter"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header2">
-
-        <EditText
-            android:layout_width="103dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="0.7"
-            android:hint="Cari Nama Dosen"
-            android:paddingStart="10dp"
-            android:paddingBottom="10dp"
-            android:textSize="14sp" />
-
-        <ImageButton
-            android:layout_width="1dp"
-            android:layout_height="40dp"
-            android:layout_gravity="top"
-            android:layout_weight="0.2"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_search_36" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_daftar2"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_field"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:padding="3dp"
+        android:gravity="center_horizontal">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view_dokter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="8dp"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_daftar_dokter"
-        android:layout_width="413dp"
-        android:layout_height="710dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="@drawable/view_bg"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_search">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_searchView_dokter"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_daftar_dokter"
-            android:layout_width="408dp"
-            android:layout_height="685dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="70dp"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="10dp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/activity_list_dokter" />
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="38dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/activity_list_dokter"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

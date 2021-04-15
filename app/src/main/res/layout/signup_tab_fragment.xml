@@ -7,7 +7,7 @@
 
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email_regis_mahasiswa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
@@ -23,7 +23,7 @@
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
-        android:id="@+id/pass"
+        android:id="@+id/password_mahasiswa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -31,16 +31,17 @@
         android:background="@drawable/edit_text_bg"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
+        android:inputType="textPassword"
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email_regis_mahasiswa"
         app:layout_constraintVertical_bias="0.002"
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
-        android:id="@+id/nama_lengkap"
+        android:id="@+id/nama_lengkap_mahasiswa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
@@ -52,12 +53,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/password_mahasiswa"
         app:layout_constraintVertical_bias="0.002"
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
-        android:id="@+id/NIM"
+        android:id="@+id/nim_mahasiswa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
@@ -69,12 +70,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nama_lengkap"
+        app:layout_constraintTop_toBottomOf="@+id/nama_lengkap_mahasiswa"
         app:layout_constraintVertical_bias="0.002"
         app:layout_constraintWidth_percent=".8" />
 
     <Button
-        android:id="@+id/buttonsignup"
+        android:id="@+id/btn_regis"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
@@ -85,7 +86,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/NIM"
+        app:layout_constraintTop_toBottomOf="@id/nim_mahasiswa"
         app:layout_constraintWidth_percent=".8" />
 
     <ImageView
@@ -98,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonsignup"
+        app:layout_constraintTop_toBottomOf="@+id/btn_regis"
         app:layout_constraintVertical_bias="0.631" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

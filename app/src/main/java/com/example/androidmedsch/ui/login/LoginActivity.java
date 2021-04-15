@@ -1,14 +1,12 @@
-package com.example.androidmedsch;
+package com.example.androidmedsch.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 
+import com.example.androidmedsch.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -25,30 +23,28 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tab_layout = findViewById(R.id.tab_layout);
         TabItem tabLogin = findViewById(R.id.login);
         TabItem tabSignUp = findViewById(R.id.signup);
 
-        final ViewPager viewPager = findViewById(R.id.view_pager);
+        view_pager = findViewById(R.id.view_pager);
 
-        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), tab_layout.getTabCount());
 
-        viewPager.setAdapter(adapter);
+        view_pager.setAdapter(adapter);
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                view_pager.setCurrentItem(tab.getPosition());
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
     }

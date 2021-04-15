@@ -1,4 +1,4 @@
-package com.example.androidmedsch;
+package com.example.androidmedsch.ui;
 
 
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.androidmedsch.R;
+import com.example.androidmedsch.ui.login.LoginActivity;
 
 
 public class LandingPage extends AppCompatActivity {
