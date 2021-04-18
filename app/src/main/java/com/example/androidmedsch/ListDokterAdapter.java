@@ -19,17 +19,13 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Li
 
    public List<AllDokter> list_dokter;
    public Context context;
+   public OnClickListener listener;
 
     public ListDokterAdapter(List<AllDokter> list_dokter, Context context) {
         this.list_dokter = list_dokter;
         this.context = context;
         notifyDataSetChanged();
     }
-
-//    public void setData(List<AllDokter> list_dokter){
-//     this.list_dokter = list_dokter;;
-//        notifyDataSetChanged();
-//   }
 
     @NonNull
     @Override
@@ -94,29 +90,28 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Li
 //    };
 
 
-    public static class ListDokterViewHold extends RecyclerView.ViewHolder  {
-        ImageView iv_pengajar;
+    public class ListDokterViewHold extends RecyclerView.ViewHolder{
         TextView tv_nama_pengajar, tv_gelar_pengajar;
 
         public ListDokterViewHold(@NonNull View itemView) {
             super(itemView);
 
-            iv_pengajar = itemView.findViewById(R.id.iv_pengajar);
             tv_nama_pengajar = itemView.findViewById(R.id.tv_nama_pengajar);
             tv_gelar_pengajar =  itemView.findViewById(R.id.tv_gelar_pengajar);
-//            this.clickListener = clickListener;
 
-//            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                listener.onItemClick(position);
+            });
         }
-
-//       @Override
-//       public void onClick(View v) {
-//            clickListener.onItemClick(getAdapterPosition());
-//       }
    }
-//
-//
-//    public interface OnClickListener{
-//        void onItemClick(Integer position);
-//    }
+
+
+    public interface OnClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnclickListener(OnClickListener listener_callback){
+        listener  = listener_callback;
+    }
 }

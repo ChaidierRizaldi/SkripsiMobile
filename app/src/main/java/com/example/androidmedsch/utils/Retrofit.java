@@ -10,7 +10,7 @@ import static android.content.Context.WIFI_SERVICE;
 
 public class Retrofit {
 
-    final static String BASE_URL = "http://192.168.1.12:3000/";
+    final static String BASE_URL = "http://192.168.1.15:3000/";
     public static retrofit2.Retrofit getRetrofit(){
 
 //        WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);

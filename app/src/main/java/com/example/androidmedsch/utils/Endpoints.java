@@ -3,7 +3,7 @@ package com.example.androidmedsch.utils;
 import com.example.androidmedsch.model.get.blok.BlokByIdMahasiswa;
 import com.example.androidmedsch.model.get.dokter.AllDokter;
 import com.example.androidmedsch.model.get.jadwal.bydokter.JadwalByDokter;
-import com.example.androidmedsch.model.get.jadwal.bytanggal.JadwalByTanggal;
+import com.example.androidmedsch.model.get.jadwal.bytanggal.JadwalByKelompok;
 import com.example.androidmedsch.model.get.jadwal.updatestatus.get.ResponseUpdateStatus;
 import com.example.androidmedsch.model.get.jadwal.updatestatus.post.RequestUpdateStatus;
 import com.example.androidmedsch.model.get.login.get.ResponseLogin;
@@ -33,8 +33,8 @@ public interface Endpoints {
     Call<List<BlokByIdMahasiswa>> getAllBlok(@Query("idMhs")int id);
 
     //GET JADWAL BY TANGGAL DAN BLOK
-    @GET("jadwal/getByTanggal")
-    Call<List<JadwalByTanggal>> getJadwalByTanggal(@Query("idMhs")int id, @Query("idBlok")int idBLok, @Query("tanggal")String tanggal);
+    @GET("jadwal/getByKelompok")
+    Call<List<JadwalByKelompok>> getJadwalByKelompok(@Query("idKelompok")int id, @Query("idBlok")int id_blok, @Query("tanggal")int tanggal, @Query("angkatan")int id_angkatan);
 
     //GET JADWAL BY DOKTER
     @GET("jadwal/getByDokterId")

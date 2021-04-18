@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="id_activityScreenTitles">
+
+        <item></item>
+        <item>Dashboard</item>
+        <item/>
+
+    </string-array>
+
+    <array name="id_activityScreenIcon">
+
+        <item>@drawable/abc_vector_test</item>
+        <item>@drawable/abc_vector_test</item>
+        <item>@drawable/abc_vector_test</item>
+        <item>@drawable/abc_vector_test</item>
+        <item>@drawable/abc_vector_test</item>
+        <item>@drawable/abc_vector_test</item>
+        <item>0</item>
+        <item>@drawable/abc_vector_test</item>
+
+    </array>
+
+
+</resources>

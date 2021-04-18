@@ -2,10 +2,13 @@ package com.example.androidmedsch.model.get.jadwal.bytanggal;
 
 import com.google.gson.annotations.SerializedName;
 
-public class JadwalByTanggal{
+public class JadwalByKelompok{
 
 	@SerializedName("ruangKelas")
 	private String ruangKelas;
+
+	@SerializedName("angkatan")
+	private int angkatan;
 
 	@SerializedName("idJadwal")
 	private int idJadwal;
@@ -27,6 +30,10 @@ public class JadwalByTanggal{
 
 	public String getRuangKelas(){
 		return ruangKelas;
+	}
+
+	public int getAngkatan(){
+		return angkatan;
 	}
 
 	public int getIdJadwal(){

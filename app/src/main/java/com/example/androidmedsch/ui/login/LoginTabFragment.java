@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.androidmedsch.R;
-import com.example.androidmedsch.SignupTabFragment;
 import com.example.androidmedsch.model.get.login.get.ResponseLogin;
 import com.example.androidmedsch.model.post.login.RequestLogin;
 import com.example.androidmedsch.ui.menu.Dashboard;
@@ -103,8 +102,10 @@ public class LoginTabFragment extends Fragment {
                         String nim = response.body().getNim();
                         String email = response.body().getEmail();
                         String nama = response.body().getNamaLengkap();
-                        String kelompok = String.valueOf(response.body().getKelompok());
+                        String kelompok = String.valueOf(response.body().getIdKelompok());
                         String angkatan = response.body().getAngkatan();
+
+                        Log.d("Data kelompok", kelompok);
 
                         sp_helper.loginSession(id, nim, email, nama, kelompok, angkatan);
                         Intent intent = new Intent(LoginTabFragment.this.requireContext(), Dashboard.class);

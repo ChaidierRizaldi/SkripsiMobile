@@ -2,8 +2,6 @@ package com.example.androidmedsch;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +91,7 @@ public class SignupTabFragment  extends Fragment {
                                     String nim = response.body().getNim();
                                     String email = response.body().getEmail();
                                     String nama = response.body().getNamaLengkap();
-                                    String kelompok = response.body().getKelompok().toString();
+                                    String kelompok = String.valueOf(response.body().getIdKelompok());
                                     String angkatan = response.body().getAngkatan();
 
                                     sharedPreferences.loginSession(id, nim, email, nama, kelompok, angkatan);

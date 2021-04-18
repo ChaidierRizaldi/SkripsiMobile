@@ -3,14 +3,17 @@ package com.example.androidmedsch;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidmedsch.databinding.ActivityDaftarDokterBinding;
@@ -27,9 +30,8 @@ import retrofit2.Response;
 
 public class DaftarDokter extends AppCompatActivity {
     private ListDokterAdapter adapter;
-    ImageButton button;
     List<AllDokter> list_dokter;
-    Dialog dialog_info_dokter;
+    TextView tv_nama, tv_jabatan, tv_nidn, tv_nomor_telepon, tv_email;
     private ActivityDaftarDokterBinding binding;
 
 
@@ -43,11 +45,11 @@ public class DaftarDokter extends AppCompatActivity {
 
         list_dokter = new ArrayList<>();
 
-        dialog_info_dokter = new Dialog(DaftarDokter.this);
-        dialog_info_dokter.setContentView(R.layout.dialog_info_dokter);
-        dialog_info_dokter.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog_info_dokter.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
-        dialog_info_dokter.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//        dialog_info_dokter = new View(DaftarDokter.this)
+//        dialog_info_dokter.setContentView(R.layout.dialog_info_dokter);
+//        dialog_info_dokter.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        dialog_info_dokter.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
+//        dialog_info_dokter.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         binding.rvDaftarDokter.setLayoutManager(new LinearLayoutManager(DaftarDokter.this, LinearLayoutManager.VERTICAL, false));
 
@@ -60,7 +62,28 @@ public class DaftarDokter extends AppCompatActivity {
                     List<AllDokter> data_dokter = response.body();
                     adapter = new ListDokterAdapter(data_dokter, DaftarDokter.this);
                     binding.rvDaftarDokter.setAdapter(adapter);
-                        Log.d("Data Dokter", String.valueOf(response.body()));
+
+                    adapter.setOnclickListener(position -> {
+                        LayoutInflater factory_dialog = LayoutInflater.from(DaftarDokter.this);
+                        final View dialog_dokter_view = factory_dialog.inflate(R.layout.dialog_info_dokter, null);
+                        final AlertDialog dialog_dokter = new AlertDialog.Builder(DaftarDokter.this).create();
+                        dialog_dokter.setView(dialog_dokter_view);
+                        tv_nama = dialog_dokter_view.findViewById(R.id.dialog_tv_nama_pengajar);
+                        tv_email = dialog_dokter_view.findViewById(R.id.dialog_tv_email_pengajar);
+                        tv_jabatan = dialog_dokter_view.findViewById(R.id.dialog_tv_jabatan);
+                        tv_nidn = dialog_dokter_view.findViewById(R.id.dialog_tv_nidn);
+                        tv_nomor_telepon = dialog_dokter_view.findViewById(R.id.dialog_tv_no_hp);
+
+                        data_dokter.forEach(allDokter -> {
+                            tv_nama.setText(allDokter.getNama());
+                            tv_nomor_telepon.setText(allDokter.getNoHp());
+                            tv_nidn.setText(allDokter.getNidn());
+                            tv_email.setText(allDokter.getEmail());
+                            tv_jabatan.setText(allDokter.getJabatan());
+                        });
+                        dialog_dokter.show();
+                    });
+                    Log.d("Data Dokter", String.valueOf(response.body()));
                 }
             }
             @Override
@@ -69,34 +92,6 @@ public class DaftarDokter extends AppCompatActivity {
                 Log.d("ERROR", t.toString());
             }
         });
-//        rv_dokter = findViewById(R.id.rv_daftar_dokter);
-//        rv_dokter.setLayoutManager(new LinearLayoutManager(DaftarDokter.this, LinearLayoutManager.VERTICAL, false));
-//        rv_dokter.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-//        rv_dokter.setAdapter(adapter);
-
-//        adapter = new ListDokterAdapter(list_dokter, DaftarDokter.this);
-//
-//
-//        Call<List<ModelAllDokter>> list_dokter = Retrofit.endpoints().getAllDokter();
-//
-//        list_dokter.enqueue(new Callback<List<ModelAllDokter>>() {
-//            @Override
-//            public void onResponse(Call<List<ModelAllDokter>> call, Response<List<ModelAllDokter>> response) {
-//                if (response.isSuccessful()){
-//                    List<ModelAllDokter> data_dokter = response.body();
-//                    adapter.setData(data_dokter);
-//
-//
-//                    Toast.makeText(DaftarDokter.this, data_dokter.toString(), Toast.LENGTH_LONG).show();
-//                    Log.d("Data", data_dokter.toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<ModelAllDokter>> call, Throwable t) {
-//                Toast.makeText(DaftarDokter.this,t.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
 
 
         binding.btnBackDaftar.setOnClickListener(new View.OnClickListener() {
@@ -106,38 +101,5 @@ public class DaftarDokter extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        button = findViewById(R.id.btn_back_daftar);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(DaftarDokter.this, Dashboard.class);
-//                startActivity(intent);
-//            }
-//        });
     }
-
-//    @Override
-//    public void onItemClick(Integer position) {
-//        dialog_info_dokter.show();
-//    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        SearchView searchView = findViewById(R.id.cari_pengajar);
-//        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                Log.d("nama", newText);
-//                return false;
-//            }
-//        });
-//        return true;
-//    }
 }

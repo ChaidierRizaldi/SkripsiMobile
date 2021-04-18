@@ -9,13 +9,13 @@ import java.util.HashMap;
 
 public class SharedPreferences {
     public static final String SHARED_PREFERENCES = "SHARED_PREFERENCES" ;
-     static final String ID = "ID";
-     static final String NIM = "NIM";
-     static final String EMAIL = "EMAIL";
-     static final String LOGIN = "LOGIN";
-     static final String NAMA_LENGKAP = "NAMA_LENGKAP";
-     static final String ANGKATAN = "ANGKATAN";
-     static final String KELOMPOK = "KELOMPOK";
+    public static final String ID = "ID";
+    public static final String NIM = "NIM";
+    public static final String EMAIL = "EMAIL";
+    public static final String LOGIN = "LOGIN";
+    public static final String NAMA_LENGKAP = "NAMA_LENGKAP";
+    public static final String ANGKATAN = "ANGKATAN";
+    public static final String KELOMPOK = "KELOMPOK";
      public static android.content.SharedPreferences sp_helper;
      public static android.content.SharedPreferences.Editor editor;
      Context context_activity;

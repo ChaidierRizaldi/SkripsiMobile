@@ -1,53 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBF6FF"
+    android:weightSum="4"
     tools:context=".ui.menu.Dashboard">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:background="#EBF6FF"
+        android:id="@+id/toolbar_dashboard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize" />
 
-        <ImageView
-            android:layout_width="156dp"
-            android:layout_height="102dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:src="@drawable/logoskripsi" />
+    <FrameLayout
+        android:id="@+id/container_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <ImageButton
-            android:id="@+id/btn_jadwal_kuliah"
-            android:layout_width="229dp"
-            android:layout_height="146dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:background="#0000ffff"
-            android:src="@drawable/btn_jadwal" />
-
-        <ImageButton
-            android:id="@+id/btn_daftar_dokter"
-            android:layout_width="229dp"
-            android:layout_height="146dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#0000ffff"
-            android:clickable="true"
-            android:src="@drawable/btn_daftar" />
-
-
-        <ImageButton
-            android:id="@+id/btn_keluar"
-            android:layout_width="229dp"
-            android:layout_height="146dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#0000ffff"
-            android:clickable="true"
-            android:src="@drawable/btn_keluar" />
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

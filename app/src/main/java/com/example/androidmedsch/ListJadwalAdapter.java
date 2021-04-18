@@ -8,16 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidmedsch.model.get.jadwal.bytanggal.JadwalByTanggal;
+import com.example.androidmedsch.model.get.jadwal.bytanggal.JadwalByKelompok;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListJadwalAdapter extends RecyclerView.Adapter<ListJadwalAdapter.ListJadwalViewHold> {
 
-    private ArrayList<JadwalByTanggal> models;
+    private List<JadwalByKelompok> models;
 
-    public  ListJadwalAdapter(ArrayList<JadwalByTanggal> list_jadwal){
+    public  ListJadwalAdapter(List<JadwalByKelompok> list_jadwal){
         this.models = list_jadwal;
     }
 
@@ -34,7 +34,9 @@ public class ListJadwalAdapter extends RecyclerView.Adapter<ListJadwalAdapter.Li
         holder.mata_kuliah.setText(models.get(position).getMataKuliah());
         holder.pengajar.setText(models.get(position).getNamaPengajar());
         holder.ruang_kelas.setText(models.get(position).getRuangKelas());
-        holder.status.setText(models.get(position).getStatus());
+        if (models.get(position).getStatus() == 1){
+            holder.status.setText("Siap Belajar");
+        }
     }
 
     @Override

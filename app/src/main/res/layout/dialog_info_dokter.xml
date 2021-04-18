@@ -9,14 +9,6 @@
     android:layout_margin="10dp"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/dialog_iv_pengajar"
-        android:layout_weight="0.3"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:src="@drawable/doctor1"
-        />
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="0dp"
@@ -30,7 +22,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sans"
             android:textSize="18sp"
-            android:text="Dr. Bambang"
+            android:hint="Nama Dokter"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/dialog_tv_jabatan"
@@ -39,7 +31,7 @@
             android:fontFamily="@font/sans"
             android:textSize="16sp"
             android:layout_marginTop="5dp"
-            android:text="Dokter THT"
+            android:hint="Jabatan"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/dialog_tv_nidn"
@@ -48,7 +40,7 @@
             android:fontFamily="@font/sans"
             android:textSize="16sp"
             android:layout_marginTop="5dp"
-            android:text="1571072905980081"
+            android:hint="NIDN"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/dialog_tv_no_hp"
@@ -57,7 +49,7 @@
             android:fontFamily="@font/sans"
             android:layout_marginTop="5dp"
             android:textSize="16sp"
-            android:text="08979676398"
+            android:hint="Nomor Telepon"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/dialog_tv_email_pengajar"
@@ -66,7 +58,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/sans"
             android:textSize="16sp"
-            android:text="khukuh.anugrah@gmail.com"
+            android:hint="Email"
             android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>

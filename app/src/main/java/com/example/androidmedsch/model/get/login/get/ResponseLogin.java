@@ -7,25 +7,31 @@ public class ResponseLogin{
 	@SerializedName("nim")
 	private String nim;
 
+	@SerializedName("idKelompok")
+	private int idKelompok;
+
+	@SerializedName("angkatan")
+	private String angkatan;
+
 	@SerializedName("idMhs")
 	private int idMhs;
 
 	@SerializedName("namaLengkap")
 	private String namaLengkap;
 
-
 	@SerializedName("email")
 	private String email;
 
-	@SerializedName("kelompok")
-	private Integer kelompok;
-
-	@SerializedName("angkatan")
-	private String angkatan;
-
-
 	public String getNim(){
 		return nim;
+	}
+
+	public int getIdKelompok(){
+		return idKelompok;
+	}
+
+	public String getAngkatan(){
+		return angkatan;
 	}
 
 	public int getIdMhs(){
@@ -39,8 +45,4 @@ public class ResponseLogin{
 	public String getEmail(){
 		return email;
 	}
-
-	public String getAngkatan(){ return angkatan; }
-
-	public Integer getKelompok(){ return kelompok; }
 }
