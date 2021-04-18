@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -33,11 +35,15 @@ import java.util.Arrays;
 public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItemSelected {
     private static final int POS_CLOSE = 0;
     private static  final int POS_DASHBOARD = 1;
+    private static final int POS_PROFIL = 2;
+    private static final int POS_LOGOUT = 3;
 
+    TextView profil, logout;
 
     private String [] screenTitle;
     private Drawable[] screenIcons;
 
+    SharedPreferences preferences;
     private SlidingRootNav slidingRootNav;
 
     @Override
@@ -48,6 +54,8 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
 
         Toolbar toolbar = findViewById(R.id.toolbar_dashboard);
         setSupportActionBar(toolbar);
+
+        preferences = new SharedPreferences(this);
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
@@ -64,12 +72,27 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
         screenTitle = loadScreenTitle();
 
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
-            createItemFor(POS_CLOSE),
-            createItemFor(POS_DASHBOARD).setChecked(true),
-            new SpaceItem(260)
+                createItemFor(POS_DASHBOARD).setChecked(true),
+                createItemFor(POS_CLOSE),
+                new SpaceItem(260)
         ));
         adapter.setListener(this);
         adapter.setSelected(POS_DASHBOARD);
+//        adapter.setListener(position -> {
+//            if (position == POS_LOGOUT){
+//                logout.findViewById(R.id.btn_logout);
+//
+//                logout.setOnClickListener(v->{
+//                    preferences.logoutUser();
+//                    Intent intent = new Intent(this, LoginActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                });
+//            }else if (position == POS_PROFIL){
+//                Toast.makeText(this, "PROFIL", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
     private DrawerItem createItemFor(int position){
         return new SimpleItem(screenIcons[position], screenTitle[position])
@@ -115,6 +138,11 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
             FragmentDashboard dashboardFragment = new FragmentDashboard();
             transaction.replace(R.id.container_dashboard, dashboardFragment);
         }
+//        else if (position == POS_PROFIL){
+//            Toast.makeText(this, "PROFIL", Toast.LENGTH_LONG).show();
+//        }else if (position == POS_LOGOUT){
+//            Toast.makeText(this, "LOGOUT", Toast.LENGTH_LONG).show();
+//        }
         slidingRootNav.closeMenu();
         transaction.addToBackStack(null);
         transaction.commit();

@@ -56,8 +56,8 @@ public class LoginTabFragment extends Fragment {
         btn_login = root.findViewById(R.id.buttonlogin);
         imageView = root.findViewById(R.id.imageLogin);
 
-        email.setTranslationX(800);
-        pass.setTranslationX(800);
+//        email.setTranslationX(800);
+//        pass.setTranslationX(800);
         forgetPass.setTranslationX(800);
         btn_login.setTranslationX(800);
         imageView.setTranslationX(800);

@@ -5,74 +5,157 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <EditText
-        android:id="@+id/email_regis_mahasiswa"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_email_regis"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:hint="Email"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintWidth_percent=".8" />
+        android:layout_margin="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Email">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_regis_mahasiswa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:fontFamily="@font/sans"
+            android:textSize="14sp"
+            android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/password_mahasiswa"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_password_regis"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_email_regis"
+        android:layout_margin="20dp"
+        android:background="@drawable/edit_text_bg"
+        app:passwordToggleEnabled="true"
         android:hint="Password"
-        android:background="@drawable/edit_text_bg"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:inputType="textPassword"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_regis_mahasiswa"
-        app:layout_constraintVertical_bias="0.002"
-        app:layout_constraintWidth_percent=".8" />
+        app:passwordToggleDrawable="@drawable/visibility_password">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_mahasiswa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:fontFamily="@font/sans"
+            android:textSize="14sp"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/nama_lengkap_mahasiswa"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_nama_lengkap_regis"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:hint="Nama lengkap"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_mahasiswa"
-        app:layout_constraintVertical_bias="0.002"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_password_regis"
+        android:layout_margin="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Nama Lengkap">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nama_lengkap_mahasiswa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:fontFamily="@font/sans"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/nim_mahasiswa"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_nim_regis"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:hint="NIM"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nama_lengkap_mahasiswa"
-        app:layout_constraintVertical_bias="0.002"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_nama_lengkap_regis"
+        android:layout_margin="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="NIM">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nim_mahasiswa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:fontFamily="@font/sans"
+            android:textSize="14sp"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/email_regis_mahasiswa"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/edit_text_bg"-->
+<!--        android:hint="Email"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.1"-->
+<!--        app:layout_constraintWidth_percent=".8" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/password_mahasiswa"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:hint="Password"-->
+<!--        android:background="@drawable/edit_text_bg"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/email_regis_mahasiswa"-->
+<!--        app:layout_constraintVertical_bias="0.002"-->
+<!--        app:layout_constraintWidth_percent=".8" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/nama_lengkap_mahasiswa"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/edit_text_bg"-->
+<!--        android:hint="Nama lengkap"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/password_mahasiswa"-->
+<!--        app:layout_constraintVertical_bias="0.002"-->
+<!--        app:layout_constraintWidth_percent=".8" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/nim_mahasiswa"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/edit_text_bg"-->
+<!--        android:hint="NIM"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/nama_lengkap_mahasiswa"-->
+<!--        app:layout_constraintVertical_bias="0.002"-->
+<!--        app:layout_constraintWidth_percent=".8" />-->
 
     <Button
         android:id="@+id/btn_regis"
@@ -86,7 +169,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nim_mahasiswa"
+        app:layout_constraintTop_toBottomOf="@id/layout_nim_regis"
         app:layout_constraintWidth_percent=".8" />
 
     <ImageView
