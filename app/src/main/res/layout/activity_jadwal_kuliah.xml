@@ -67,8 +67,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_jadwal_kuliah"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraintLayout"
         tools:listitem="@layout/item_slide" />

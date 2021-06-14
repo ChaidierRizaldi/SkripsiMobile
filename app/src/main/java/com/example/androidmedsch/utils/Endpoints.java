@@ -22,8 +22,8 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Endpoints {
-    @GET("mahasiswa")
-    Call<DetailMahasiswa> getDetailMahasiswa(@Path("id")int id);
+    @GET("mahasiswa/{idMhs}")
+    Call<DetailMahasiswa> getDetailMahasiswa(@Path("idMhs")int id);
 
     @GET("dokter")
     Call<List<AllDokter>> getAllDokter();
@@ -34,11 +34,14 @@ public interface Endpoints {
 
     //GET JADWAL BY TANGGAL DAN BLOK
     @GET("jadwal/getByKelompok")
-    Call<List<JadwalByKelompok>> getJadwalByKelompok(@Query("idKelompok")int id, @Query("idBlok")int id_blok, @Query("tanggal")int tanggal, @Query("angkatan")int id_angkatan);
+    Call<List<JadwalByKelompok>> getJadwalByKelompok(@Query("idKelompok")int id, @Query("idBlok")int id_blok, @Query("tanggal")String tanggal, @Query("angkatan")int id_angkatan);
 
     //GET JADWAL BY DOKTER
     @GET("jadwal/getByDokterId")
     Call<List<JadwalByDokter>> getJadwalByDokter(@Query("idDokter")int id);
+
+    @GET("jadwal/{idMhs}")
+    Call<List<JadwalByKelompok>> getAllJadwalMahasiswa(@Path("idMhs")int idMhs);
 
     @POST("jadwal/updateStatus")
     Call<ResponseUpdateStatus> getStatus(@Body RequestUpdateStatus body_status);

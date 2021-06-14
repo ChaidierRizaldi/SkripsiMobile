@@ -4,13 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class AllDokter{
 
-	@SerializedName("role")
-	private int role;
-
 	@SerializedName("nama")
 	private String nama;
 
-	@SerializedName("no_hp")
+	@SerializedName("no_telp")
 	private String noHp;
 
 	@SerializedName("id_pengajar")
@@ -22,12 +19,11 @@ public class AllDokter{
 	@SerializedName("nidn")
 	private String nidn;
 
+	@SerializedName("bidang_kepakaran")
+	private String bidangKepakaran;
+
 	@SerializedName("email")
 	private String email;
-
-	public int getRole(){
-		return role;
-	}
 
 	public String getNama(){
 		return nama;
@@ -47,6 +43,10 @@ public class AllDokter{
 
 	public String getNidn(){
 		return nidn;
+	}
+
+	public String getBidangKepakaran(){
+		return bidangKepakaran;
 	}
 
 	public String getEmail(){

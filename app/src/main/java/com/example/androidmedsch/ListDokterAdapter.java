@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,20 +17,21 @@ import java.util.List;
 public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.ListDokterViewHold> {
 
    public List<AllDokter> list_dokter;
-   public Context context;
    public OnClickListener listener;
 
-    public ListDokterAdapter(List<AllDokter> list_dokter, Context context) {
+    public ListDokterAdapter(List<AllDokter> list_dokter) {
         this.list_dokter = list_dokter;
-        this.context = context;
         notifyDataSetChanged();
+    }
+
+    public void SetOnClickListener(OnClickListener listener_item){
+        this.listener = listener_item;
     }
 
     @NonNull
     @Override
     public ListDokterViewHold onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_list_dokter, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_dokter, parent, false);
         return new ListDokterViewHold(view);
     }
 
@@ -40,9 +40,11 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Li
 
         String nama = list_dokter.get(position).getNama();
         String jabatan = list_dokter.get(position).getJabatan();
+        String bidang = list_dokter.get(position).getBidangKepakaran();
 
         holder.tv_nama_pengajar.setText(nama);
         holder.tv_gelar_pengajar.setText(jabatan);
+        holder.tv_bidang_pengajar.setText(bidang);
 
     }
 
@@ -91,27 +93,23 @@ public class ListDokterAdapter extends RecyclerView.Adapter<ListDokterAdapter.Li
 
 
     public class ListDokterViewHold extends RecyclerView.ViewHolder{
-        TextView tv_nama_pengajar, tv_gelar_pengajar;
-
+        TextView tv_nama_pengajar, tv_gelar_pengajar, tv_bidang_pengajar;
+        AllDokter data_dokter;
         public ListDokterViewHold(@NonNull View itemView) {
             super(itemView);
 
             tv_nama_pengajar = itemView.findViewById(R.id.tv_nama_pengajar);
             tv_gelar_pengajar =  itemView.findViewById(R.id.tv_gelar_pengajar);
+            tv_bidang_pengajar = itemView.findViewById(R.id.tv_bidang_pengajar);
 
             itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                listener.onItemClick(position);
+                listener.onItemClick(data_dokter, getBindingAdapterPosition());
             });
         }
-   }
+    }
 
 
     public interface OnClickListener{
-        void onItemClick(int position);
-    }
-
-    public void setOnclickListener(OnClickListener listener_callback){
-        listener  = listener_callback;
+        void onItemClick(AllDokter dokter, int position);
     }
 }

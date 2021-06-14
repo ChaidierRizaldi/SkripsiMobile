@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidmedsch.DaftarDokter;
 import com.example.androidmedsch.JadwalKuliah;
@@ -25,6 +27,7 @@ import com.example.androidmedsch.slider.DrawerAdapter;
 import com.example.androidmedsch.slider.model.DrawerItem;
 import com.example.androidmedsch.slider.model.SimpleItem;
 import com.example.androidmedsch.slider.model.SpaceItem;
+import com.example.androidmedsch.ui.Profil;
 import com.example.androidmedsch.ui.login.LoginActivity;
 import com.example.androidmedsch.utils.SharedPreferences;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
@@ -33,12 +36,9 @@ import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import java.util.Arrays;
 
 public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItemSelected {
-    private static final int POS_CLOSE = 0;
-    private static  final int POS_DASHBOARD = 1;
-    private static final int POS_PROFIL = 2;
-    private static final int POS_LOGOUT = 3;
-
-    TextView profil, logout;
+    private static  final int POS_DASHBOARD = 0;
+    private static final int POS_PROFIL = 1;
+    private static final int POS_LOGOUT = 2;
 
     private String [] screenTitle;
     private Drawable[] screenIcons;
@@ -73,38 +73,35 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
 
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_DASHBOARD).setChecked(true),
-                createItemFor(POS_CLOSE),
-                new SpaceItem(260)
+                createItemFor(POS_PROFIL),
+                createItemFor(POS_LOGOUT)
         ));
         adapter.setListener(this);
+
+        RecyclerView list_menu = findViewById(R.id.list_menu_side);
+        list_menu.setNestedScrollingEnabled(false);
+        list_menu.setLayoutManager(new LinearLayoutManager(this));
+        list_menu.setAdapter(adapter);
+
         adapter.setSelected(POS_DASHBOARD);
-//        adapter.setListener(position -> {
-//            if (position == POS_LOGOUT){
-//                logout.findViewById(R.id.btn_logout);
-//
-//                logout.setOnClickListener(v->{
-//                    preferences.logoutUser();
-//                    Intent intent = new Intent(this, LoginActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                });
-//            }else if (position == POS_PROFIL){
-//                Toast.makeText(this, "PROFIL", Toast.LENGTH_LONG).show();
-//            }
-//        });
     }
+
+    @SuppressWarnings("rawtypes")
     private DrawerItem createItemFor(int position){
         return new SimpleItem(screenIcons[position], screenTitle[position])
                 .withIcon(color(R.color.black))
                 .withText(color(R.color.black))
-                .withSelectedText(color(R.color.black))
-                .withSelectedIcon(color(R.color.black));
+                .withSelectedText(color(R.color.white))
+                .withSelectedIcon(color(R.color.white));
     }
 
     @ColorInt
     private int color(@ColorRes int res){
         return ContextCompat.getColor(this, res);
+    }
+
+    private String[] loadScreenTitle(){
+        return getResources().getStringArray(R.array.id_activityScreenTitles);
     }
 
     private Drawable[] loadScreenIcons(){
@@ -122,13 +119,8 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        finishAffinity();
     }
-
-    private String[] loadScreenTitle(){
-        return getResources().getStringArray(R.array.id_activityScreenTitles);
-    }
-
 
     @Override
     public void onItemSelected(int position) {
@@ -137,14 +129,19 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
         if (position == POS_DASHBOARD){
             FragmentDashboard dashboardFragment = new FragmentDashboard();
             transaction.replace(R.id.container_dashboard, dashboardFragment);
+        }else if (position == POS_PROFIL){
+            Intent intent = new Intent(this, Profil.class);
+            startActivity(intent);
+        }else if (position == POS_LOGOUT){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            preferences.logoutUser();
+            startActivity(intent);
+            finish();
         }
-//        else if (position == POS_PROFIL){
-//            Toast.makeText(this, "PROFIL", Toast.LENGTH_LONG).show();
-//        }else if (position == POS_LOGOUT){
-//            Toast.makeText(this, "LOGOUT", Toast.LENGTH_LONG).show();
-//        }
         slidingRootNav.closeMenu();
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 }

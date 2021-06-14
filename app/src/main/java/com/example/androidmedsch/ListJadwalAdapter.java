@@ -34,8 +34,12 @@ public class ListJadwalAdapter extends RecyclerView.Adapter<ListJadwalAdapter.Li
         holder.mata_kuliah.setText(models.get(position).getMataKuliah());
         holder.pengajar.setText(models.get(position).getNamaPengajar());
         holder.ruang_kelas.setText(models.get(position).getRuangKelas());
-        if (models.get(position).getStatus() == 1){
+        if (models.get(position).getStatus() == 0){
+            holder.status.setText("Pending");
+        }else if (models.get(position).getStatus() == 1){
             holder.status.setText("Siap Belajar");
+        }else if (models.get(position).getStatus() == 2){
+            holder.status.setText("Jadwal Dibatalkan");
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.androidmedsch.utils;
+ package com.example.androidmedsch.utils;
 
 import android.net.wifi.WifiManager;
 
@@ -10,10 +10,9 @@ import static android.content.Context.WIFI_SERVICE;
 
 public class Retrofit {
 
-    final static String BASE_URL = "http://192.168.1.15:3000/";
+    final static String BASE_URL = "http://192.168.1.7:3000/";
     public static retrofit2.Retrofit getRetrofit(){
 
-//        WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();

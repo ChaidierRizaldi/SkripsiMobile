@@ -2,22 +2,16 @@
 <resources>
     <string-array name="id_activityScreenTitles">
 
-        <item></item>
-        <item>Dashboard</item>
+        <item>Profil</item>
+        <item>Logout</item>
         <item/>
 
     </string-array>
 
     <array name="id_activityScreenIcon">
-
-        <item>@drawable/abc_vector_test</item>
-        <item>@drawable/abc_vector_test</item>
-        <item>@drawable/abc_vector_test</item>
-        <item>@drawable/abc_vector_test</item>
-        <item>@drawable/abc_vector_test</item>
-        <item>@drawable/abc_vector_test</item>
         <item>0</item>
-        <item>@drawable/abc_vector_test</item>
+        <item>@drawable/ic_baseline_manage_accounts_24</item>
+        <item>@drawable/ic_baseline_logout_24</item>
 
     </array>
 

@@ -33,6 +33,7 @@ public class LandingPage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LandingPage.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

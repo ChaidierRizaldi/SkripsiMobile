@@ -10,35 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"/>
 
-    <TextView
-        android:id="@+id/btn_to_profil"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_menu_side"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sans"
-        android:text="Profile"
-        android:drawablePadding="10dp"
-        android:drawableLeft="@drawable/ic_baseline_manage_accounts_24"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:clickable="true"/>
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"/>
-    
-    <TextView
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textColor="@color/black"
-        android:fontFamily="@font/sans"
-        android:drawablePadding="10dp"
-        android:drawableLeft="@drawable/ic_baseline_logout_24"
-        android:textSize="16sp"
-        android:layout_marginStart="18dp"
-        android:clickable="true"/>
+        />
 
     
 

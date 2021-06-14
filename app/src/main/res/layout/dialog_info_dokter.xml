@@ -60,5 +60,15 @@
             android:textSize="16sp"
             android:hint="Email"
             android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/dialog_tv_bidang_pengajar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/sans"
+            android:textSize="16sp"
+            android:hint="Bidang"
+            android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>
