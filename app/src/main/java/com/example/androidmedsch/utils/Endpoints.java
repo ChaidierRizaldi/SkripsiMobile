@@ -1,6 +1,8 @@
 package com.example.androidmedsch.utils;
 
 import com.example.androidmedsch.model.get.blok.BlokByIdMahasiswa;
+import com.example.androidmedsch.model.get.blok.DataBlok;
+import com.example.androidmedsch.model.get.blok.ResponseAddBlock;
 import com.example.androidmedsch.model.get.dokter.AllDokter;
 import com.example.androidmedsch.model.get.jadwal.bydokter.JadwalByDokter;
 import com.example.androidmedsch.model.get.jadwal.bytanggal.JadwalByKelompok;
@@ -9,6 +11,7 @@ import com.example.androidmedsch.model.get.jadwal.updatestatus.post.RequestUpdat
 import com.example.androidmedsch.model.get.login.get.ResponseLogin;
 import com.example.androidmedsch.model.get.mahasiswa.DetailMahasiswa;
 import com.example.androidmedsch.model.get.register.get.ResponseRegister;
+import com.example.androidmedsch.model.post.login.AddBlock;
 import com.example.androidmedsch.model.post.login.RequestLogin;
 import com.example.androidmedsch.model.post.register.RequestRegister;
 
@@ -32,6 +35,9 @@ public interface Endpoints {
     @GET("blok/getByMhsId")
     Call<List<BlokByIdMahasiswa>> getAllBlok(@Query("idMhs")int id);
 
+    @GET("blok/getById/{id_blok}")
+    Call<DataBlok> getDataBlok(@Path("id_blok") int id_blok);
+
     //GET JADWAL BY TANGGAL DAN BLOK
     @GET("jadwal/getByKelompok")
     Call<List<JadwalByKelompok>> getJadwalByKelompok(@Query("idKelompok")int id, @Query("idBlok")int id_blok, @Query("tanggal")String tanggal, @Query("angkatan")int id_angkatan);
@@ -46,11 +52,18 @@ public interface Endpoints {
     @POST("jadwal/updateStatus")
     Call<ResponseUpdateStatus> getStatus(@Body RequestUpdateStatus body_status);
 
+    //POST
     //LOGIN
     @POST("mahasiswa/login")
     Call<ResponseLogin> login(@Body RequestLogin body_login);
 
+    //REGISTER
     @POST("mahasiswa/signup")
     Call<ResponseRegister> signUp(@Body RequestRegister body_register);
+
+    //ADDBLOCK
+    @POST("blok/addBlokToMhs")
+    Call<ResponseAddBlock> addBlock(@Body AddBlock body_blok);
+
 
 }

@@ -101,11 +101,11 @@ public class Dashboard extends AppCompatActivity implements DrawerAdapter.onItem
     }
 
     private String[] loadScreenTitle(){
-        return getResources().getStringArray(R.array.id_activityScreenTitles);
+        return getResources().getStringArray(R.array.id_activityScreenTittles);
     }
 
     private Drawable[] loadScreenIcons(){
-        TypedArray ta = getResources().obtainTypedArray(R.array.id_activityScreenIcon);
+        TypedArray ta = getResources().obtainTypedArray(R.array.id_activityScreenIcons);
         Drawable[] icons = new Drawable[ta.length()];
         for (int i=0; i< ta.length(); i++){
             int id = ta.getResourceId(i, 0);

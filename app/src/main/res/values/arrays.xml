@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="id_activityScreenTitles">
 
-        <item>Profil</item>
-        <item>Logout</item>
+    <string-array name="id_activityScreenTittles">
+
+        <item></item>
+        <item>Dashboard</item>
+        <item>My Profile</item>
         <item/>
-
+        <item>Log Out</item>
     </string-array>
 
-    <array name="id_activityScreenIcon">
+    <string-array name="id_activityScreenIcons">
         <item>0</item>
-        <item>@drawable/ic_baseline_manage_accounts_24</item>
-        <item>@drawable/ic_baseline_logout_24</item>
-
-    </array>
-
-
+        <item>@drawable/profile_test1</item>
+        <item>@drawable/log_out_test1</item>
+    </string-array>
 </resources>

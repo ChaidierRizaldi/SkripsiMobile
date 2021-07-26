@@ -61,21 +61,4 @@ public class SharedPreferences {
         editor.clear();
         editor.commit();
     }
-//    public static void onLogin(Context context, Boolean login){
-//        editor.putBoolean(LOGIN, login);
-//        editor.apply();
-//    }
-//
-//    public static void setNim(Context context, String nim){
-//        editor.putString(NIM,nim);
-//        editor.apply();
-//    }
-//    public static void setEmail(Context context, String email){
-//        editor.putString(EMAIL, email);
-//        editor.apply();
-//    }
-//    public static void setId(Context context, String id){
-//        editor.putString(ID, id);
-//        editor.apply();
-//    }
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,6 @@ import retrofit2.Response;
 
 public class DaftarDokter extends AppCompatActivity {
     private ListDokterAdapter adapter;
-    List<AllDokter> list_dokter;
 
     TextView tv_nama, tv_jabatan, tv_nidn, tv_nomor_telepon, tv_email, tv_bidang;
     private ActivityDaftarDokterBinding binding;
@@ -41,22 +41,19 @@ public class DaftarDokter extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        list_dokter = new ArrayList<>();
 
-//        dialog_info_dokter = new View(DaftarDokter.this)
-//        dialog_info_dokter.setContentView(R.layout.dialog_info_dokter);
-//        dialog_info_dokter.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog_info_dokter.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
-//        dialog_info_dokter.getWindow().setBackgroundDrawableResource(android.R.color.transparent)
+        LayoutInflater factory_dialog = LayoutInflater.from(DaftarDokter.this);
+        final View dialog_dokter_view = factory_dialog.inflate(R.layout.dialog_info_dokter, null);
+        final AlertDialog dialog_dokter = new AlertDialog.Builder(DaftarDokter.this).create();
+        dialog_dokter.setView(dialog_dokter_view);
+
+        dialog_dokter.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog_dokter.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
+        dialog_dokter.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         binding.rvDaftarDokter.setLayoutManager(new LinearLayoutManager(DaftarDokter.this, LinearLayoutManager.VERTICAL, false));
 
         Call<List<AllDokter>> retro_list_dokter = Retrofit.endpoints().getAllDokter();
-//
-//        LayoutInflater factory_dialog = LayoutInflater.from(DaftarDokter.this);
-//        final View dialog_dokter_view = factory_dialog.inflate(R.layout.dialog_info_dokter, null);
-//        final AlertDialog dialog_dokter = new AlertDialog.Builder(DaftarDokter.this).create();
-//        dialog_dokter.setView(dialog_dokter_view);
 
         retro_list_dokter.enqueue(new Callback<List<AllDokter>>() {
             @Override
@@ -66,30 +63,26 @@ public class DaftarDokter extends AppCompatActivity {
                     adapter = new ListDokterAdapter(data_dokter);
                     binding.rvDaftarDokter.setAdapter(adapter);
 
-                    data_dokter.forEach(dokter -> {
-                        adapter.SetOnClickListener((dokter1, position) -> {
+                    adapter.SetOnClickListener((dokter, position) -> {
+                        dialog_dokter.create();
+                        tv_nama = dialog_dokter_view.findViewById(R.id.dialog_tv_nama_pengajar);
+                        tv_email = dialog_dokter_view.findViewById(R.id.dialog_tv_email_pengajar);
+                        tv_jabatan = dialog_dokter_view.findViewById(R.id.dialog_tv_jabatan);
+                        tv_nidn = dialog_dokter_view.findViewById(R.id.dialog_tv_nidn);
+                        tv_nomor_telepon = dialog_dokter_view.findViewById(R.id.dialog_tv_no_hp);
+                        tv_bidang =dialog_dokter_view.findViewById(R.id.dialog_tv_bidang_pengajar);
 
-                            AlertDialog.Builder dialog = new AlertDialog.Builder(DaftarDokter.this);
 
-                            View view_dialog = LayoutInflater.from(DaftarDokter.this).inflate(R.layout.dialog_info_dokter, null);
-                            dialog.setView(view_dialog);
-                            tv_nama = view_dialog.findViewById(R.id.dialog_tv_nama_pengajar);
-                            tv_email = view_dialog.findViewById(R.id.dialog_tv_email_pengajar);
-                            tv_jabatan = view_dialog.findViewById(R.id.dialog_tv_jabatan);
-                            tv_nidn = view_dialog.findViewById(R.id.dialog_tv_nidn);
-                            tv_nomor_telepon = view_dialog.findViewById(R.id.dialog_tv_no_hp);
-                            tv_bidang =view_dialog.findViewById(R.id.dialog_tv_bidang_pengajar);
-                            dialog.create();
+                        tv_nama.setText(dokter.getNama());
+                        tv_nomor_telepon.setText(dokter.getNoHp());
+                        tv_bidang.setText(dokter.getBidangKepakaran());
+                        tv_email.setText(dokter.getEmail());
+                        tv_nidn.setText(dokter.getNidn());
+                        tv_jabatan.setText(dokter.getJabatan());
 
-                            tv_nama.setText(dokter.getNama());
-                            tv_nomor_telepon.setText(dokter.getNoHp());
-                            tv_bidang.setText(dokter.getBidangKepakaran());
-                            tv_email.setText(dokter.getEmail());
-                            tv_nidn.setText(dokter.getNidn());
-                            tv_jabatan.setText(dokter.getJabatan());
+                        dialog_dokter.show();
 
-                            dialog.show();
-                        });
+                        Log.d("Data Item", String.valueOf(dokter));
                     });
                     Log.d("Data Dokter", String.valueOf(response.body()));
                 }
@@ -102,28 +95,9 @@ public class DaftarDokter extends AppCompatActivity {
         });
 
 
-        binding.btnBackDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DaftarDokter.this, Dashboard.class);
-                startActivity(intent);
-            }
+        binding.btnBackDaftar.setOnClickListener(v -> {
+            Intent intent = new Intent(DaftarDokter.this, Dashboard.class);
+            startActivity(intent);
         });
     }
-
-//    @Override
-//    public void onItemClick(int position) {
-//
-//
-//
-//        list_dokter.forEach(allDokter -> {
-//            tv_nama.setText(allDokter.getNama());
-//            tv_nomor_telepon.setText(allDokter.getNoHp());
-//            tv_nidn.setText(allDokter.getNidn());
-//            tv_email.setText(allDokter.getEmail());
-//            tv_jabatan.setText(allDokter.getJabatan());
-//            tv_bidang.setText(allDokter.getBidangKepakaran());
-//        });
-//        dialog_dokter.show();
-//    }
 }

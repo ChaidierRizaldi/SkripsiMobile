@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".JadwalKuliah"
-    android:background="#EBF6FF">
+    android:background="@drawable/bg_jadwalkuliah">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,17 +39,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="15dp"/>
-<!--        <TextView-->
-<!--            android:id="@+id/tv_blok_jadwal"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:text="Blok Masalah Pada Dewasa II 3.5 "-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.241"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/btn_back_daftar"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -64,24 +53,43 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_msg_no_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="50dp"
+        android:elevation="6dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#B4DDFF">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/black"
+                android:fontFamily="@font/sans"
+                android:textSize="18sp"
+                android:text="@string/note_tidak_ada_jadwal"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_jadwal_kuliah"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="409dp"
+        android:layout_height="259dp"
+        android:layout_marginTop="30dp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraintLayout"
         tools:listitem="@layout/item_slide" />
-
-    <ImageView
-        android:layout_width="415dp"
-        android:layout_height="132dp"
-        android:layout_marginTop="8dp"
-        android:gravity="bottom"
-        android:src="@drawable/imgjadwal_kuliah"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_jadwal_kuliah" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

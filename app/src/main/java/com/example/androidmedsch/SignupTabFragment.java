@@ -2,6 +2,7 @@ package com.example.androidmedsch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.androidmedsch.model.get.blok.ResponseAddBlock;
 import com.example.androidmedsch.model.get.login.get.ResponseLogin;
 import com.example.androidmedsch.model.get.register.get.ResponseRegister;
+import com.example.androidmedsch.model.post.login.AddBlock;
 import com.example.androidmedsch.model.post.login.RequestLogin;
 import com.example.androidmedsch.model.post.register.RequestRegister;
+import com.example.androidmedsch.ui.login.LoginTabFragment;
 import com.example.androidmedsch.ui.menu.Dashboard;
 import com.example.androidmedsch.utils.Retrofit;
 import com.example.androidmedsch.utils.SharedPreferences;
@@ -95,11 +99,31 @@ public class SignupTabFragment  extends Fragment {
                                     String angkatan = response.body().getAngkatan();
 
                                     sharedPreferences.loginSession(id, nim, email, nama, kelompok, angkatan);
-                                    Intent intent = new Intent(SignupTabFragment.this.requireContext(), Dashboard.class);
-                                    startActivity(intent);
-                                    SignupTabFragment.this.getActivity().finish();
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    Toast.makeText(SignupTabFragment.this.requireContext(), "Login Sukses", Toast.LENGTH_LONG).show();
+
+                                    AddBlock body_request = new AddBlock();
+                                    body_request.setId_blok(1);
+                                    body_request.setId_mhs(id);
+
+                                    Call<ResponseAddBlock> add_blok = Retrofit.endpoints().addBlock(body_request);
+                                    add_blok.enqueue(new Callback<ResponseAddBlock>() {
+                                        @Override
+                                        public void onResponse(Call<ResponseAddBlock> call, Response<ResponseAddBlock> response_blok) {
+                                            if (response_blok.isSuccessful()){
+                                                Intent intent = new Intent(SignupTabFragment.this.requireContext(), Dashboard.class);
+                                                startActivity(intent);
+                                                SignupTabFragment.this.getActivity().finish();
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                Toast.makeText(SignupTabFragment.this.requireContext(), "Login Sukses", Toast.LENGTH_LONG).show();
+                                            }else {
+                                                Log.d("Error Add Block", String.valueOf(response_blok.errorBody()));
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<ResponseAddBlock> call, Throwable t) {
+                                            Toast.makeText(SignupTabFragment.this.requireContext(), "Gagal Menambahkan Blok Baru Pada Mahasiswa", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
                                 }
                             }
 

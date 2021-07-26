@@ -11,13 +11,16 @@
     app:cardElevation="6dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:background="@drawable/edit_text_bg"
+        android:layout_height="match_parent"
         android:padding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -46,7 +49,7 @@
 
                 <TextView
                     android:id="@+id/tv_jam"
-                    android:layout_width="200dp"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:textColor="@android:color/black"
@@ -82,10 +85,10 @@
 
                 <TextView
                     android:id="@+id/tv_matkul"
-                    android:layout_width="200dp"
-                    android:maxLines="2"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:maxLines="2"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -119,11 +122,11 @@
 
                 <TextView
                     android:id="@+id/tv_pengajar"
-                    android:layout_width="200dp"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:textColor="@android:color/black"
                     android:maxLines="2"
+                    android:textColor="@android:color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -155,7 +158,7 @@
 
                 <TextView
                     android:id="@+id/tv_ruang_kelas"
-                    android:layout_width="200dp"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:textColor="@android:color/black"
@@ -190,7 +193,7 @@
 
                 <TextView
                     android:id="@+id/tv_status"
-                    android:layout_width="200dp"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:textColor="@android:color/black"

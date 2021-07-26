@@ -19,7 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.androidmedsch.R;
+import com.example.androidmedsch.model.get.blok.ResponseAddBlock;
 import com.example.androidmedsch.model.get.login.get.ResponseLogin;
+import com.example.androidmedsch.model.post.login.AddBlock;
 import com.example.androidmedsch.model.post.login.RequestLogin;
 import com.example.androidmedsch.ui.menu.Dashboard;
 import com.example.androidmedsch.utils.Retrofit;
@@ -36,9 +38,7 @@ public class LoginTabFragment extends Fragment {
 
     EditText email, pass;
     String email_value, pass_value;
-    TextView forgetPass;
     Button btn_login;
-    ImageView imageView;
     SharedPreferences sp_helper;
     float v = 0;
 
@@ -52,27 +52,19 @@ public class LoginTabFragment extends Fragment {
 
         email = root.findViewById(R.id.email_login);
         pass = root.findViewById(R.id.password_login);
-        forgetPass = root.findViewById(R.id.forget_Pass);
         btn_login = root.findViewById(R.id.buttonlogin);
-        imageView = root.findViewById(R.id.imageLogin);
 
 //        email.setTranslationX(800);
 //        pass.setTranslationX(800);
-        forgetPass.setTranslationX(800);
         btn_login.setTranslationX(800);
-        imageView.setTranslationX(800);
 
         email.setAlpha(v);
         pass.setAlpha(v);
-        forgetPass.setAlpha(v);
         btn_login.setAlpha(v);
-        imageView.setAlpha(v);
 
         email.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
         pass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        forgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
         btn_login.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
-        imageView.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(900).start();
 
         btn_login.setOnClickListener(v -> {
                 email_value = email.getText().toString().trim();
@@ -108,6 +100,7 @@ public class LoginTabFragment extends Fragment {
                         Log.d("Data kelompok", kelompok);
 
                         sp_helper.loginSession(id, nim, email, nama, kelompok, angkatan);
+
                         Intent intent = new Intent(LoginTabFragment.this.requireContext(), Dashboard.class);
                         startActivity(intent);
                         LoginTabFragment.this.getActivity().finish();

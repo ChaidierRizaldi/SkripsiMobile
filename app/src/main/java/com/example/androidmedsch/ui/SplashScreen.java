@@ -58,7 +58,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 Pair[] pairs = new Pair[2];
                 pairs [0] = new Pair<View,String> (logo, "textView");
-                pairs [1] = new Pair<View,String> (image, "imageView");
+                pairs [1] = new Pair<View,String> (image, "btnView");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this,pairs);
                 startActivity(intent,options.toBundle());

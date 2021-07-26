@@ -32,8 +32,8 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
-            android:layout_width="408dp"
-            android:layout_height="535dp"
+            android:layout_width="414dp"
+            android:layout_height="554dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".7"

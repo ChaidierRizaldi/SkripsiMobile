@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#B4DDFF"
+    android:background="@drawable/bg_itemside"
     android:layout_height="match_parent">
     
     <Space
